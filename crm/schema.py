@@ -172,6 +172,12 @@ class OrderInput(graphene.InputObjectType):
     order_date = graphene.DateTime()
 
 
+class CustomerType(DjangoObjectType):
+    class Meta:
+        model = Customer
+        fields = ("id", "name", "email", "phone")
+
+
 class CustomerNode(DjangoObjectType):
     database_id = graphene.Int()
 
@@ -210,11 +216,10 @@ class OrderNode(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     hello = graphene.String(default_value="Hello, GraphQL!")
-    all_customers = DjangoFilterConnectionField(
-        CustomerNode,
+    all_customers = graphene.List(
+        CustomerType,
         filter=CustomerFilterInput(),
         order_by=graphene.String(),
-        filterset_class=CustomerFilter,
     )
     all_products = DjangoFilterConnectionField(
         ProductNode,
