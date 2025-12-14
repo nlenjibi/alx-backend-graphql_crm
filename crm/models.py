@@ -16,7 +16,7 @@ class TimeStampedModel(models.Model):
 
 	"""Abstract base model that tracks creation and update timestamps."""
 class Customer(models.Model):
-	name = models.CharField(max_length=255)
+	name = models.CharField(max_length=100)
 	email = models.EmailField(unique=True)
 	phone = models.CharField(max_length=32, blank=True)
 
