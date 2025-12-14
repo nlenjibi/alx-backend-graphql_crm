@@ -20,7 +20,7 @@ class Customer(models.Model):
 	email = models.EmailField(unique=True)
 	phone = models.CharField(max_length=32, blank=True)
 
-	def __str__(self) -> str:
+	def __str__(self):
 		return self.name
 
 class Product(TimeStampedModel):
@@ -28,7 +28,7 @@ class Product(TimeStampedModel):
 	price = models.DecimalField(max_digits=10, decimal_places=2)
 	stock = models.PositiveIntegerField(default=0)
 
-	def __str__(self) -> str:
+	def __str__(self):
 		return self.name
 
 
@@ -38,7 +38,7 @@ class Order(TimeStampedModel):
 	order_date = models.DateTimeField(default=timezone.now)
 	total_amount = models.DecimalField(max_digits=12, decimal_places=2, default=Decimal('0.00'))
 
-	def __str__(self) -> str:
+	def __str__(self)																																																							:
 		return f"Order #{self.pk}"
 
 	def recalculate_total(self) -> None:
@@ -46,3 +46,4 @@ class Order(TimeStampedModel):
 		total = sum((product.price for product in self.products.all()), Decimal('0.00'))
 		self.total_amount = total
 		self.save(update_fields=['total_amount'])
+																																																																																														
