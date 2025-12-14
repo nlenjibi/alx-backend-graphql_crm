@@ -216,7 +216,7 @@ class OrderNode(DjangoObjectType):
 
 class Query(graphene.ObjectType):
     hello = graphene.String(default_value="Hello, GraphQL!")
-    all_customers = graphene.List(CustomerType, filter=CustomerFilterInput(), order_by=graphene.String())
+    all_customers = graphene.List(CustomerType)
     all_products = DjangoFilterConnectionField(
         ProductNode,
         filter=ProductFilterInput(),
