@@ -21,8 +21,7 @@ class Customer(models.Model):
 	phone = models.CharField(max_length=32, blank=True)
 
 	def __str__(self) -> str:
-		return f"{self.name} <{self.email}>"
-
+		return self.name
 
 class Product(TimeStampedModel):
 	name = models.CharField(max_length=255)
