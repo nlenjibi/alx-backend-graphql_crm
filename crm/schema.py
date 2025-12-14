@@ -254,7 +254,7 @@ class CreateCustomer(graphene.Mutation):
     class Arguments:
         input = CustomerInput(required=True)
 
-    customer = graphene.Field(CustomerNode)
+    customer = graphene.Field(CustomerType)
     message = graphene.String()
 
     @classmethod
