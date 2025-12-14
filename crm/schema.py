@@ -335,7 +335,7 @@ class CreateOrder(graphene.Mutation):
             order.products.set(products)
             total = sum((product.price for product in products), Decimal("0.00"))
             order.total_amount = total
-            order.save(update_fields=["total_amount"])
+            order.save()
         return CreateOrder(order=order)
 
 
