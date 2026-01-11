@@ -22,7 +22,7 @@ def log_crm_heartbeat():
         f.write(message + '\n')
 
 
-def updatelowstock():
+def update_low_stock():
     # Execute the UpdateLowStockProducts mutation
     try:
         transport = RequestsHTTPTransport(url='http://localhost:8000/graphql')
@@ -42,11 +42,11 @@ def updatelowstock():
         
         # Log the updates
         timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        with open('/tmp/lowstockupdates_log.txt', 'a') as f:
+        with open('/tmp/low_stock_updates_log.txt', 'a') as f:
             f.write(f"{timestamp}: {result['updateLowStockProducts']['message']}\n")
             for product in result['updateLowStockProducts']['products']:
                 f.write(f"  - {product['name']}: stock now {product['stock']}\n")
     except Exception as e:
         timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        with open('/tmp/lowstockupdates_log.txt', 'a') as f:
+        with open('/tmp/low_stock_updates_log.txt', 'a') as f:
             f.write(f"{timestamp}: Error updating low stock products: {str(e)}\n")
