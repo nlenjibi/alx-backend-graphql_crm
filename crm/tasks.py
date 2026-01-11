@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from celery import shared_task
 from gql import gql, Client
 from gql.transport.requests import RequestsHTTPTransport
@@ -18,6 +18,6 @@ def generate_crm_report():
     total_customers = result['totalCustomers']['totalCount']
     total_orders = result['totalOrders']['totalCount']
     total_revenue = sum(edge['node']['totalAmount'] for edge in result['orders']['edges'])
-    timestamp = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    with open('/tmp/crm_report_log.txt', 'a') as f:
-        f.write(f"{timestamp} - Report: {total_customers} customers, {total_orders} orders, {total_revenue} revenue\n")
+    timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    with open('/tmp/crmreportlog.txt', 'a') as f:
+      f.write(f"{timestamp} - Report: {total_customers} customers, {total_orders} orders, {total_revenue} revenue\n")
