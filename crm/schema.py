@@ -13,6 +13,7 @@ from graphql_relay import from_global_id
 
 from crm.filters import CustomerFilter, OrderFilter, ProductFilter
 from crm.models import Customer, Order, Product
+from crm.models import Product
 
 PHONE_PATTERN = re.compile(r"^(\+\d{7,15}|\d{3}-\d{3}-\d{4})$")
 CUSTOMER_ORDER_FIELDS = {"name", "email", "created_at"}
