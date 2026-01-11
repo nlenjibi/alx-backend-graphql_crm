@@ -122,7 +122,7 @@ STATIC_URL = 'static/'
 
 
 GRAPHENE = {
-    'SCHEMA': 'graphql_crm.schema.schema',
+    'SCHEMA': 'alx_backend_graphql.schema.schema',
 }
 
 
